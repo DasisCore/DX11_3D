@@ -10,6 +10,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{5ba58e80-dc07-40ce-958f-aee50f5a38d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\Camera">
+      <UniqueIdentifier>{89fefd2b-4155-4f75-891d-026e45a575c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -18,8 +21,20 @@
     <ClCompile Include="Main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="01. TriangleDeme.cpp">
+    <ClCompile Include="01. TriangleDemo.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="02. QuadDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="03. ConstBufferDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="04. CameraDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraScript.cpp">
+      <Filter>Main\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -29,12 +44,33 @@
     <ClInclude Include="Main.h">
       <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="01. TriangleDeme.h">
+    <ClInclude Include="01. TriangleDemo.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="02. QuadDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="03. ConstBufferDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="04. CameraDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraScript.h">
+      <Filter>Main\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Shaders\01. Triangle.fx">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\02. Quad.fx">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\03. ConstBuffer.fx">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\04. World.fx">
       <Filter>Shaders</Filter>
     </FxCompile>
   </ItemGroup>
