@@ -26,4 +26,3 @@ public:
 	// Texture
 	shared_ptr<Texture> _texture;
 };
-

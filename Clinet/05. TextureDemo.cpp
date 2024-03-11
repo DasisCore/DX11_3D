@@ -11,7 +11,8 @@ void TextureDemo::Init()
 
 	// Object
 	_geometry = make_shared<Geometry<VertexTextureData>>();
-	GeometryHelper::CreateQuad(_geometry);
+	//GeometryHelper::CreateSphere(_geometry);
+	GeometryHelper::CreateGrid(_geometry, 256, 256);
 
 	_vertexBuffer = make_shared<VertexBuffer>();
 	_vertexBuffer->Create(_geometry->GetVertices());
@@ -24,7 +25,7 @@ void TextureDemo::Init()
 	_camera->GetOrAddTransform();
 	_camera->AddComponent(make_shared<Camera>());
 	_camera->AddComponent(make_shared<CameraScript>());
-	_camera->GetTransform()->SetPosition(Vec3(0.f, 0.f, -2.f));
+	//_camera->GetTransform()->SetPosition(Vec3(0.f, 0.f, -2.f));
 
 	_texture = RESOURCES->Load<Texture>(L"Veigar", L"..\\Resources\\Textures\\veigar.jpg");
 
@@ -52,5 +53,5 @@ void TextureDemo::Render()
 	DC->IASetIndexBuffer(_indexBuffer->GetComPtr().Get(), DXGI_FORMAT_R32_UINT, 0);
 	
 	//_shader->Draw(0, 1, _vertexBuffer->GetCount());
-	_shader->DrawIndexed(0, 0, _indexBuffer->GetCount(), 0, 0);
+	_shader->DrawIndexed(0, 1, _indexBuffer->GetCount(), 0, 0);
 }
