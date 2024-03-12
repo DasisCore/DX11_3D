@@ -1,14 +1,15 @@
 #include "00. Global.fx"
 
 float3 LightDir;
-float4 LightDiffuse;
-float4 MaterialDiffuse;
-Texture2D DiffuseMap;
+float4 LightSpecular;
+float4 MaterialSpecular;
 
-VertexOutput VS(VertexTextureNormal input)
+
+MeshOutput VS(VertexTextureNormal input)
 {
-    VertexOutput output;
+    MeshOutput output;
     output.position = mul(input.position, W);
+    output.worldPosition = input.position;
     output.position = mul(output.position, VP);
     
     output.uv = input.uv;
@@ -18,16 +19,21 @@ VertexOutput VS(VertexTextureNormal input)
 }
 
 
-// Diffuse (분산광)
-// 물체의 표면에서 분산되어 눈으로 바로 들어오는 빛
-// 각도에 따라 밝기가 다르다 (Lambert 공식)
-
-float4 PS(VertexOutput input) : SV_TARGET
+// Specular ( 반사광 )
+// 한방향으로 완전히 반사되는 빛 (Phong)
+float4 PS(MeshOutput input) : SV_TARGET
 {
-    float4 color = DiffuseMap.Sample(LinearSampler, input.uv);
+    //float3 R = reflect(LightDir, input.normal);
+    float3 R = LightDir - (2 * input.normal * dot(LightDir, input.normal));
+    R = normalize(R);
     
-    float value = dot(-LightDir, normalize(input.normal));
-    color = color * value * LightDiffuse * MaterialDiffuse;
+    float3 cameraPosition = -V._41_42_43;
+    float3 E = normalize(cameraPosition - input.worldPosition);
+    
+    float value = saturate(dot(R, E)); // clamp(0, 1)
+    float specular = pow(value, 10);
+    
+    float4 color = LightSpecular * MaterialSpecular * specular;
     
     return color;
 }
