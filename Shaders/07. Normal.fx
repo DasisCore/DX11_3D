@@ -4,6 +4,7 @@ matrix Projection;
 Texture2D Texture0;
 float3 LightDir;
 
+
 struct VertexInput
 {
     float4 position : POSITION;
