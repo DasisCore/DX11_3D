@@ -21,7 +21,7 @@ void MeshRenderer::Update()
 	if (_mesh == nullptr || _texture == nullptr || _shader == nullptr)
 		return;
 
-	_shader->GetSRV("Texture0")->SetResource(_texture->GetComPtr().Get());
+	_shader->GetSRV("DiffuseMap")->SetResource(_texture->GetComPtr().Get());
 
 	auto world = GetTransform()->GetWorldMatrix();
 	RENDER->PushTransformData(TransformDesc{ world });
