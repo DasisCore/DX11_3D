@@ -19,8 +19,9 @@ MeshOutput VS(VertexTextureNormal input)
 }
 
 
-// Specular ( 반사광 )
-// 한방향으로 완전히 반사되는 빛 (Phong)
+// Emissive ( 외곽선 )
+
+
 float4 PS(MeshOutput input) : SV_TARGET
 {
     //float3 R = reflect(LightDir, input.normal);
